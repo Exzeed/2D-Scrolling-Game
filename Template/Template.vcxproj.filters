@@ -31,6 +31,9 @@
     <Filter Include="Enums">
       <UniqueIdentifier>{c00e61a2-9515-4297-a699-76a9a5f3005e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Objects\Buttons">
+      <UniqueIdentifier>{6a703f59-e4fc-417c-9909-a011672d4bb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -90,12 +93,6 @@
     <ClCompile Include="..\src\Level1Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\StartButton.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Button.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Plane.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
@@ -111,8 +108,26 @@
     <ClCompile Include="..\src\ScoreBoardManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Button.cpp">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\RestartButton.cpp">
-      <Filter>Game Objects</Filter>
+      <Filter>Game Objects\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StartButton.cpp">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ExitButton.cpp">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\InstructionsButton.cpp">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\InstructionScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MenuButton.cpp">
+      <Filter>Game Objects\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -191,12 +206,6 @@
     <ClInclude Include="..\src\Level1Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\StartButton.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Button.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Plane.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
@@ -215,8 +224,26 @@
     <ClInclude Include="..\src\ScoreBoardManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Button.h">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\RestartButton.h">
-      <Filter>Game Objects</Filter>
+      <Filter>Game Objects\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StartButton.h">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ExitButton.h">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\InstructionsButton.h">
+      <Filter>Game Objects\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\InstructionScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MenuButton.h">
+      <Filter>Game Objects\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

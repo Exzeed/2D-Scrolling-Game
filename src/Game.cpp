@@ -1,6 +1,6 @@
 #include "Game.h"
 #include <ctime>
-#include "GLM/gtx/string_cast.hpp"
+#include "glm/gtx/string_cast.hpp"
 #include <algorithm>
 #include <iomanip>
 
@@ -158,6 +158,10 @@ void Game::changeSceneState(SceneState newState)
 		case SceneState::END_SCENE:
 			m_currentScene = new EndScene();
 			std::cout << "end scene activated" << std::endl;
+			break;
+		case SceneState::INSTRUCTION_SCENE:
+			m_currentScene = new InstructionScene();
+			std::cout << "instruction scene activated" << std::endl;
 			break;
 		default:
 			std::cout << "default case activated" << std::endl;

@@ -5,6 +5,8 @@
 #include "Scene.h"
 #include "Label.h"
 #include "StartButton.h"
+#include "ExitButton.h"
+#include "InstructionsButton.h"
 #include "Ocean.h"
 
 class StartScene : public Scene
@@ -29,6 +31,8 @@ private:
 	// Game Objects
 	Label* m_pStartLabel;
 	StartButton* m_pStartButton;
+	ExitButton* m_pExitButton;
+	InstructionsButton* m_pInstructionsButton;
 	Ocean* m_pOcean;
 
 	// private data member

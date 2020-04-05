@@ -1,5 +1,6 @@
 #include "EndScene.h"
 #include "Game.h"
+#include "ScoreBoardManager.h"
 #include <ctime>
 #include "glm/gtx/string_cast.hpp"
 #include <algorithm>
@@ -17,7 +18,9 @@ void EndScene::draw()
 {
 	m_pOcean->draw();
 	m_pGameOverLabel->draw();
+	m_pScoreLabel->draw();
 	m_pRestartButton->draw();
+	m_pMenuButton->draw();
 }
 
 void EndScene::update()
@@ -25,6 +28,8 @@ void EndScene::update()
 	m_pOcean->update();
 	m_pRestartButton->setMousePosition(m_mousePosition);
 	m_pRestartButton->ButtonClick();
+	m_pMenuButton->setMousePosition(m_mousePosition);
+	m_pMenuButton->ButtonClick();
 }
 
 void EndScene::clean()
@@ -54,6 +59,7 @@ void EndScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pRestartButton->setMouseButtonClicked(true);
+				m_pMenuButton->setMouseButtonClicked(true);
 				break;
 			}
 
@@ -63,13 +69,13 @@ void EndScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pRestartButton->setMouseButtonClicked(false);
+				m_pMenuButton->setMouseButtonClicked(false);
 				break;
 			}
 			break;
 		case SDL_MOUSEWHEEL:
 			wheel = event.wheel.y;
 			break;
-
 
 
 
@@ -102,11 +108,20 @@ void EndScene::start()
 	addChild(m_pOcean);
 	
 	const SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pGameOverLabel = new Label("Game Over", "Dock51", 80, yellow, glm::vec2(320.0f, 100.0f));
+	m_pGameOverLabel = new Label("Game Over", "Consolas", 80, yellow, glm::vec2(320.0f, 100.0f));
 	m_pGameOverLabel->setParent(this);
 	addChild(m_pGameOverLabel);
 
+	std::string score = std::to_string(ScoreBoardManager::Instance()->getScore());
+	m_pScoreLabel = new Label("Final Score: "+score, "Consolas", 48, yellow, glm::vec2(320.0f, 200.0f));
+	m_pScoreLabel->setParent(this);
+	addChild(m_pScoreLabel);
+
 	m_pRestartButton = new RestartButton();
-	m_pRestartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.5f));
+	m_pRestartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.6f));
 	addChild(m_pRestartButton);
+
+	m_pMenuButton = new MenuButton();
+	m_pMenuButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.8f));
+	addChild(m_pMenuButton);
 }

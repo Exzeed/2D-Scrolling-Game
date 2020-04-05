@@ -4,10 +4,10 @@
 Ocean::Ocean()
 {
 	TheTextureManager::Instance()->load("../Assets/textures/background.jpg",
-		"ocean", TheGame::Instance()->getRenderer());
+		"background", TheGame::Instance()->getRenderer());
 
 	// measure size by querying the texture
-	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("ocean");
+	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("background");
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -15,7 +15,6 @@ Ocean::Ocean()
 	setIsColliding(false);
 	setType(OCEAN);
 	setVelocity(glm::vec2(-5.0f, 0.0f));
-
 }
 
 Ocean::~Ocean()
@@ -27,7 +26,7 @@ void Ocean::draw()
 	int xComponent = getPosition().x;
 	int yComponent = getPosition().y;
 
-	TheTextureManager::Instance()->draw("ocean", xComponent, yComponent,
+	TheTextureManager::Instance()->draw("background", xComponent, yComponent,
 		TheGame::Instance()->getRenderer(), 0, 255, false);
 }
 

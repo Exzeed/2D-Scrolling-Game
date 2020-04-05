@@ -1,19 +1,19 @@
 #pragma once
-#ifndef __END_SCENE__
-#define __END_SCENE__
+#ifndef __INSTRUCTION_SCENE__
+#define __INSTRUCTION_SCENE__
 
 #include "Scene.h"
 #include "Label.h"
-#include "RestartButton.h"
-#include "MenuButton.h"
+#include "StartButton.h"
+#include "Ocean.h"
 
-class Ocean;
-
-class EndScene : public Scene
+class InstructionScene : public Scene
 {
 public:
-	EndScene();
-	~EndScene();
+	// constructor
+	InstructionScene();
+	// destructor
+	~InstructionScene();
 
 	// Inherited via Scene
 	virtual void draw() override;
@@ -24,17 +24,16 @@ public:
 
 	// getters
 	glm::vec2 getMousePosition();
-	
+
 private:
 	// Game Objects
-	Label* m_pGameOverLabel{};
-	Label* m_pScoreLabel{};
-	RestartButton* m_pRestartButton{};
-	MenuButton* m_pMenuButton{};
-	Ocean* m_pOcean{};
+	Label* m_pInstructionLabel;
+	StartButton* m_pStartButton;
+	Ocean* m_pOcean;
 
 	// private data member
 	glm::vec2 m_mousePosition;
+	
 };
 
-#endif /* defined (__END_SCENE__) */
+#endif /* defined (__INSTRUCTION_SCENE__) */

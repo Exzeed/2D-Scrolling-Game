@@ -1,27 +1,27 @@
-#include "StartButton.h"
+#include "MenuButton.h"
 #include "Game.h"
 
-StartButton::StartButton()
+MenuButton::MenuButton()
 	// call super constructor
 	:Button(
-		"../Assets/textures/PlayButton.png",
+		"../Assets/textures/MenuButton.png",
 		"startButton",
 		START_BUTTON, glm::vec2(400.0f, 300.0f)), m_isClicked(false)
 {
 	
 }
 
-StartButton::~StartButton()
+MenuButton::~MenuButton()
 {
 }
 
-bool StartButton::ButtonClick()
+bool MenuButton::ButtonClick()
 {
 	if (m_mouseOver() && m_mouseButtonClicked)
 	{
 		if(!m_isClicked)
 		{
-			Game::Instance()->changeSceneState(LEVEL1_SCENE);
+			Game::Instance()->changeSceneState(START_SCENE);
 			m_isClicked = true;
 		}
 		return true;

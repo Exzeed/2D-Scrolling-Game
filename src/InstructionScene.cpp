@@ -1,47 +1,41 @@
-#include "StartScene.h"
+#include "InstructionScene.h"
 #include "Game.h"
 #include <ctime>
 #include "glm/gtx/string_cast.hpp"
 #include <algorithm>
 #include <iomanip>
 
-StartScene::StartScene()
+InstructionScene::InstructionScene()
 {
-	StartScene::start();
+	InstructionScene::start();
 }
 
-StartScene::~StartScene()
+InstructionScene::~InstructionScene()
 {
 }
 
-void StartScene::draw()
+void InstructionScene::draw()
 {
 	m_pOcean->draw();
-	m_pStartLabel->draw();
+	m_pInstructionLabel->draw();
 	m_pStartButton->draw();
-	m_pExitButton->draw();
-	m_pInstructionsButton->draw();
 }
 
-void StartScene::update()
+void InstructionScene::update()
 {
 	m_pOcean->update();
 	m_pStartButton->setMousePosition(m_mousePosition);
 	m_pStartButton->ButtonClick();
-	m_pExitButton->setMousePosition(m_mousePosition);
-	m_pExitButton->ButtonClick();
-	m_pInstructionsButton->setMousePosition(m_mousePosition);
-	m_pInstructionsButton->ButtonClick();
 }
 
-void StartScene::clean()
+void InstructionScene::clean()
 {
-	delete m_pStartLabel;
+	delete m_pInstructionLabel;
 	
 	removeAllChildren();
 }
 
-void StartScene::handleEvents()
+void InstructionScene::handleEvents()
 {
 	int wheel = 0;
 	SDL_Event event;
@@ -62,8 +56,6 @@ void StartScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pStartButton->setMouseButtonClicked(true);
-				m_pExitButton->setMouseButtonClicked(true);
-				m_pInstructionsButton->setMouseButtonClicked(true);
 				break;
 			}
 
@@ -73,8 +65,6 @@ void StartScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pStartButton->setMouseButtonClicked(false);
-				m_pExitButton->setMouseButtonClicked(false);
-				m_pInstructionsButton->setMouseButtonClicked(false);
 				break;
 			}
 			break;
@@ -108,32 +98,24 @@ void StartScene::handleEvents()
 }
 
 // this function is used for initialization
-void StartScene::start()
+void InstructionScene::start()
 {
 	m_pOcean = new Ocean();
 	addChild(m_pOcean);
 
 	
 	SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pStartLabel = new Label("Side-Scroller", "Consolas", 80, yellow, 
+	m_pInstructionLabel = new Label("Instructions", "Consolas", 80, yellow, 
 		glm::vec2(Config::SCREEN_WIDTH * 0.5f, 100.0f));
-	m_pStartLabel->setParent(this);
-	addChild(m_pStartLabel);
+	m_pInstructionLabel->setParent(this);
+	addChild(m_pInstructionLabel);
 
 	m_pStartButton = new StartButton();
-	m_pStartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.4f));
+	m_pStartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.8f));
 	addChild(m_pStartButton);
-
-	m_pExitButton = new ExitButton();
-	m_pExitButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.8f));
-	addChild(m_pExitButton);
-
-	m_pInstructionsButton = new InstructionsButton();
-	m_pInstructionsButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.6f));
-	addChild(m_pInstructionsButton);
 }
 
-glm::vec2 StartScene::getMousePosition()
+glm::vec2 InstructionScene::getMousePosition()
 {
 	return m_mousePosition;
 }
