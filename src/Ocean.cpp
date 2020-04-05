@@ -3,7 +3,7 @@
 
 Ocean::Ocean()
 {
-	TheTextureManager::Instance()->load("../Assets/textures/ocean.gif",
+	TheTextureManager::Instance()->load("../Assets/textures/background.jpg",
 		"ocean", TheGame::Instance()->getRenderer());
 
 	// measure size by querying the texture
@@ -11,10 +11,10 @@ Ocean::Ocean()
 	setWidth(size.x);
 	setHeight(size.y);
 
-	setPosition(glm::vec2(0.0f, -960.0f));
+	setPosition(glm::vec2(0.0f, 0.0f));
 	setIsColliding(false);
 	setType(OCEAN);
-	setVelocity(glm::vec2(0.0f, 5.0f));
+	setVelocity(glm::vec2(-5.0f, 0.0f));
 
 }
 
@@ -48,7 +48,7 @@ void Ocean::m_move()
 
 void Ocean::m_checkBounds()
 {
-	if(getPosition().y >= 0.0f)
+	if(getPosition().x <= -850.0f)
 	{
 		m_reset();
 	}
@@ -56,5 +56,5 @@ void Ocean::m_checkBounds()
 
 void Ocean::m_reset()
 {
-	setPosition(glm::vec2(0.0f, -960.0f));
+	setPosition(glm::vec2(0.0f, 0.0f));
 }
