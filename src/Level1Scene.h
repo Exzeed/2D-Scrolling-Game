@@ -5,7 +5,7 @@
 #include "Scene.h"
 #include "Plane.h"
 #include "Island.h"
-#include "Ocean.h"
+#include "Background.h"
 #include "Cloud.h"
 #include "Config.h"
 
@@ -28,7 +28,7 @@ private:
 	// game objects
 	Plane* m_pPlane;
 	Island* m_pIsland;
-	Ocean* m_pOcean;
+	Background* m_pBackground;
 
 	int m_cloudNum = Config::CLOUD_NUM;
 	std::vector<Cloud*> m_pClouds;

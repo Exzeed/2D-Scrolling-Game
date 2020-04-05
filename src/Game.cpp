@@ -56,10 +56,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 				return false; // render int fail
 			}
 
-			// IMGUI 
-			ImGui::CreateContext();
-			ImGuiSDL::Initialize(m_pRenderer, width, height);
-
 			// Initialize Font Support
 			if (TTF_Init() == -1)
 			{
@@ -196,9 +192,6 @@ void Game::clean()
 
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
-
-	// Clean Up for ImGui
-	ImGui::DestroyContext();
 
 	TTF_Quit();
 

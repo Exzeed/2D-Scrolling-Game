@@ -6,8 +6,7 @@
 #include "Label.h"
 #include "RestartButton.h"
 #include "MenuButton.h"
-
-class Ocean;
+#include "Background.h"
 
 class EndScene : public Scene
 {
@@ -31,7 +30,7 @@ private:
 	Label* m_pScoreLabel{};
 	RestartButton* m_pRestartButton{};
 	MenuButton* m_pMenuButton{};
-	Ocean* m_pOcean{};
+	Background* m_pBackground{};
 
 	// private data member
 	glm::vec2 m_mousePosition;

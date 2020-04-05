@@ -1,3 +1,12 @@
+/*
+ * Source File Name: InstructionScene.cpp
+ * Author Name: Geethan Kanthasamy
+ * Student Number: 301033918
+ * Last Modified by: Geethan Kanthasamy
+ * Date Last Modified: April 4th 2020
+ * Description: A Scene Object that displays the instructions and controls of the game
+ */
+
 #include "InstructionScene.h"
 #include "Game.h"
 #include <ctime>
@@ -16,14 +25,14 @@ InstructionScene::~InstructionScene()
 
 void InstructionScene::draw()
 {
-	m_pOcean->draw();
+	m_pBackground->draw();
 	m_pInstructionLabel->draw();
 	m_pStartButton->draw();
 }
 
 void InstructionScene::update()
 {
-	m_pOcean->update();
+	m_pBackground->update();
 	m_pStartButton->setMousePosition(m_mousePosition);
 	m_pStartButton->ButtonClick();
 }
@@ -100,8 +109,8 @@ void InstructionScene::handleEvents()
 // this function is used for initialization
 void InstructionScene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 
 	
 	SDL_Color yellow = { 255, 255, 0, 255 };

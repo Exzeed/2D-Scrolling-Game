@@ -16,7 +16,7 @@ StartScene::~StartScene()
 
 void StartScene::draw()
 {
-	m_pOcean->draw();
+	m_pBackground->draw();
 	m_pStartLabel->draw();
 	m_pStartButton->draw();
 	m_pExitButton->draw();
@@ -25,7 +25,7 @@ void StartScene::draw()
 
 void StartScene::update()
 {
-	m_pOcean->update();
+	m_pBackground->update();
 	m_pStartButton->setMousePosition(m_mousePosition);
 	m_pStartButton->ButtonClick();
 	m_pExitButton->setMousePosition(m_mousePosition);
@@ -110,8 +110,8 @@ void StartScene::handleEvents()
 // this function is used for initialization
 void StartScene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 
 	
 	SDL_Color yellow = { 255, 255, 0, 255 };

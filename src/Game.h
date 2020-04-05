@@ -11,10 +11,6 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-// IMGUI Includes
-#include "IMGUI/imgui.h"
-#include "IMGUI_SDL/imgui_sdl.h"
-
 // Game Managers
 #include "Config.h"
 #include "TextureManager.h"

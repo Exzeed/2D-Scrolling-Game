@@ -1,3 +1,12 @@
+/*
+ * Source File Name: ExitButton.cpp
+ * Author Name: Geethan Kanthasamy
+ * Student Number: 301033918
+ * Last Modified by: Geethan Kanthasamy
+ * Date Last Modified: April 4th 2020
+ * Description: Displays a button that exits the application
+ */
+
 #include "ExitButton.h"
 #include "Game.h"
 

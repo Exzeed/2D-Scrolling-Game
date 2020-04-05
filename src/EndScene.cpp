@@ -16,7 +16,7 @@ EndScene::~EndScene()
 
 void EndScene::draw()
 {
-	m_pOcean->draw();
+	m_pBackground->draw();
 	m_pGameOverLabel->draw();
 	m_pScoreLabel->draw();
 	m_pRestartButton->draw();
@@ -25,7 +25,7 @@ void EndScene::draw()
 
 void EndScene::update()
 {
-	m_pOcean->update();
+	m_pBackground->update();
 	m_pRestartButton->setMousePosition(m_mousePosition);
 	m_pRestartButton->ButtonClick();
 	m_pMenuButton->setMousePosition(m_mousePosition);
@@ -80,7 +80,6 @@ void EndScene::handleEvents()
 
 
 
-
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym)
 			{
@@ -104,8 +103,8 @@ void EndScene::handleEvents()
 
 void EndScene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	m_pBackground = new Background();
+	addChild(m_pBackground);
 	
 	const SDL_Color yellow = { 255, 255, 0, 255 };
 	m_pGameOverLabel = new Label("Game Over", "Consolas", 80, yellow, glm::vec2(320.0f, 100.0f));

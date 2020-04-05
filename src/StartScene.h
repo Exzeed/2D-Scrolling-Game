@@ -7,7 +7,7 @@
 #include "StartButton.h"
 #include "ExitButton.h"
 #include "InstructionsButton.h"
-#include "Ocean.h"
+#include "Background.h"
 
 class StartScene : public Scene
 {
@@ -33,7 +33,7 @@ private:
 	StartButton* m_pStartButton;
 	ExitButton* m_pExitButton;
 	InstructionsButton* m_pInstructionsButton;
-	Ocean* m_pOcean;
+	Background* m_pBackground;
 
 	// private data member
 	glm::vec2 m_mousePosition;
