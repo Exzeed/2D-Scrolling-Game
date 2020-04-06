@@ -14,11 +14,9 @@ Island::Island()
 	m_reset();
 	setIsColliding(false);
 	setType(GameObjectType::ISLAND);
-	setVelocity(glm::vec2(0.0f, 5.0f));
+	setVelocity(glm::vec2(-5.0f, 0.0f));
 
 	TheSoundManager::Instance()->load("../Assets/audio/yay.ogg", "yay", SOUND_SFX);
-
-	
 }
 
 Island::~Island()
@@ -46,8 +44,10 @@ void Island::clean()
 
 void Island::m_reset()
 {
-	const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
-	setPosition(glm::vec2(randomX, -getHeight()));
+	//const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
+	const auto randomY = Util::RandomRange(getHeight() * 1.1, Config::SCREEN_HEIGHT - getHeight());
+
+	setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), randomY));
 }
 
 void Island::m_move()
@@ -59,7 +59,7 @@ void Island::m_move()
 
 void Island::m_checkBounds()
 {
-	if(getPosition().y > Config::SCREEN_HEIGHT + getHeight())
+	if(getPosition().x <= -Config::SCREEN_WIDTH * 0.2f + getWidth())
 	{
 		m_reset();
 	}

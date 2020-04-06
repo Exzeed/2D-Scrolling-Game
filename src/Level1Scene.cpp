@@ -34,7 +34,8 @@ void Level1Scene::update()
 
 	m_pIsland->update();
 
-	m_pPlayer->setPosition(glm::vec2(m_mousePosition.x, m_pPlayer->getPosition().y));
+	//m_pPlayer->setPosition(glm::vec2(m_mousePosition.x, m_pPlayer->getPosition().y));
+	m_pPlayer->setPosition(glm::vec2(m_pPlayer->getPosition().x, m_mousePosition.y));
 	m_pPlayer->update();
 
 	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pIsland);
@@ -103,16 +104,16 @@ void Level1Scene::handleEvents()
 
 				/************************************************************************/
 			case SDLK_w:
-				
+				m_pPlayer->move(UP);
 				break;
 			case SDLK_s:
-				
+				m_pPlayer->move(DOWN);
 				break;
 			case SDLK_a:
-				m_pPlayer->move(LEFT);
+				//m_pPlayer->move(UP);
 				break;
 			case SDLK_d:
-				m_pPlayer->move(RIGHT);
+				//m_pPlayer->move(RIGHT);
 				break;
 			}
 			
@@ -121,18 +122,18 @@ void Level1Scene::handleEvents()
 			switch (event.key.keysym.sym)
 			{
 			case SDLK_w:
-				
+				m_pPlayer->setIsMoving(false);
 				break;
 
 			case SDLK_s:
-				
+				m_pPlayer->setIsMoving(false);
 				break;
 
 			case SDLK_a:
-				m_pPlayer->setIsMoving(false);
+				//m_pPlayer->setIsMoving(false);
 				break;
 			case SDLK_d:
-				m_pPlayer->setIsMoving(false);
+				//m_pPlayer->setIsMoving(false);
 				break;
 			}
 			

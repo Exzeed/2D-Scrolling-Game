@@ -14,7 +14,6 @@ Cloud::Cloud()
 	m_reset();
 	setIsColliding(false);
 	setType(GameObjectType::CLOUD);
-	
 
 	TheSoundManager::Instance()->load("../Assets/audio/thunder.ogg", "thunder", SOUND_SFX);
 }
@@ -44,13 +43,16 @@ void Cloud::clean()
 void Cloud::m_reset()
 {
 	// speed changes
-	const auto randomVelocityX = Util::RandomRange(-2, 2);
-	const auto randomVelocityY = Util::RandomRange(5, 10);
+	const auto randomVelocityX = Util::RandomRange(-10, -15);
+	const auto randomVelocityY = Util::RandomRange(-3, 3);
 	setVelocity(glm::vec2(randomVelocityX, randomVelocityY));
 
 	// positional changes
 	const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
-	setPosition(glm::vec2(randomX, -getHeight()));
+	const auto randomY = Util::RandomRange(getHeight() * 0.5, Config::SCREEN_HEIGHT - getHeight());
+
+	//setPosition(glm::vec2(randomX, -getHeight()));
+	setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), randomY));
 }
 
 void Cloud::m_move()
@@ -62,6 +64,11 @@ void Cloud::m_move()
 
 void Cloud::m_checkBounds()
 {
+	if(getPosition().x <= -Config::SCREEN_WIDTH * 0.5f + getWidth())
+	{
+		m_reset();
+	}
+
 	if (getPosition().y > Config::SCREEN_HEIGHT + getHeight())
 	{
 		m_reset();

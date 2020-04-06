@@ -11,7 +11,7 @@ Player::Player() :m_maxSpeed(5.0f), m_isMoving(false)
 	setWidth(size.x);
 	setHeight(size.y);
 
-	setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, 435.0f));
+	setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.1f, Config::SCREEN_HEIGHT * 0.5f));
 	setIsColliding(false);
 	setType(GameObjectType::PLAYER);
 	setVelocity(glm::vec2(0.0f, 0.0f));
@@ -61,11 +61,11 @@ void Player::move(Move newMove)
 	
 	switch(newMove)
 	{
-	case RIGHT:
-		setVelocity(glm::vec2(1.0f * m_maxSpeed, 0.0f));
+	case DOWN:
+		setVelocity(glm::vec2(0.0f, 1.0f * m_maxSpeed));
 		break;
-	case LEFT:
-		setVelocity(glm::vec2(-1.0f * m_maxSpeed, 0.0f));
+	case UP:
+		setVelocity(glm::vec2(0.0f, -1.0f * m_maxSpeed));
 		break;
 	}
 }
@@ -82,15 +82,17 @@ void Player::setIsMoving(bool newState)
 
 void Player::m_checkBounds()
 {
-	// check right bounds
-	if(getPosition().x >= Config::SCREEN_WIDTH - getWidth() * 0.5f)
+	// check bottom bounds
+	if(getPosition().y >= Config::SCREEN_HEIGHT - getHeight() * 0.5f)
 	{
-		setPosition(glm::vec2(Config::SCREEN_WIDTH - getWidth() * 0.5f, getPosition().y));
+		//setPosition(glm::vec2(Config::SCREEN_WIDTH - getWidth() * 0.5f, getPosition().y));
+		setPosition(glm::vec2(getPosition().x, Config::SCREEN_HEIGHT - getHeight() * 0.5f));
 	}
 
-	// check left bounds
-	if (getPosition().x <=  getWidth() * 0.5f)
+	// check top bounds
+	if (getPosition().y <=  getHeight() * 1.1f)
 	{
-		setPosition(glm::vec2(getWidth() * 0.5f, getPosition().y));
+		//setPosition(glm::vec2(getWidth() * 0.5f, getPosition().y));
+		setPosition(glm::vec2(getPosition().x, getHeight() * 1.1f));
 	}
 }
