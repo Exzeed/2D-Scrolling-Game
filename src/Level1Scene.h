@@ -3,7 +3,7 @@
 #define __LEVEL_1_SCENE__
 
 #include "Scene.h"
-#include "Plane.h"
+#include "Player.h"
 #include "Island.h"
 #include "Background.h"
 #include "Cloud.h"
@@ -26,7 +26,7 @@ public:
 
 private:
 	// game objects
-	Plane* m_pPlane;
+	Player* m_pPlayer;
 	Island* m_pIsland;
 	Background* m_pBackground;
 
@@ -36,8 +36,6 @@ private:
 
 	// private data member
 	glm::vec2 m_mousePosition;
-	
-	
 };
 
 #endif /* defined (__LEVEL_1_SCENE__) */

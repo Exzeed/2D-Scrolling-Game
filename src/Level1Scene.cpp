@@ -18,7 +18,7 @@ void Level1Scene::draw()
 	
 	m_pIsland->draw();
 	
-	m_pPlane->draw();
+	m_pPlayer->draw();
 
 	for (auto cloud : m_pClouds)
 	{
@@ -34,17 +34,15 @@ void Level1Scene::update()
 
 	m_pIsland->update();
 
-	m_pPlane->setPosition(glm::vec2(m_mousePosition.x, m_pPlane->getPosition().y));
-	m_pPlane->update();
+	m_pPlayer->setPosition(glm::vec2(m_mousePosition.x, m_pPlayer->getPosition().y));
+	m_pPlayer->update();
 
-	//CollisionManager::AABBCheck(m_pPlane, m_pIsland);
-
-	CollisionManager::squaredRadiusCheck(m_pPlane, m_pIsland);
+	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pIsland);
 
 	for (auto cloud : m_pClouds)
 	{
 		cloud->update();
-		CollisionManager::squaredRadiusCheck(m_pPlane, cloud);
+		CollisionManager::squaredRadiusCheck(m_pPlayer, cloud);
 	}
 }
 
@@ -111,10 +109,10 @@ void Level1Scene::handleEvents()
 				
 				break;
 			case SDLK_a:
-				m_pPlane->move(LEFT);
+				m_pPlayer->move(LEFT);
 				break;
 			case SDLK_d:
-				m_pPlane->move(RIGHT);
+				m_pPlayer->move(RIGHT);
 				break;
 			}
 			
@@ -131,10 +129,10 @@ void Level1Scene::handleEvents()
 				break;
 
 			case SDLK_a:
-				m_pPlane->setIsMoving(false);
+				m_pPlayer->setIsMoving(false);
 				break;
 			case SDLK_d:
-				m_pPlane->setIsMoving(false);
+				m_pPlayer->setIsMoving(false);
 				break;
 			}
 			
@@ -153,8 +151,8 @@ void Level1Scene::start()
 	m_pIsland = new Island(); // instantiates Island
 	addChild(m_pIsland);
 	
-	m_pPlane = new Plane(); // instantiates Plane
-	addChild(m_pPlane);
+	m_pPlayer = new Player();
+	addChild(m_pPlayer);
 
 	// instantiate Cloud Pool
 	m_buildClouds();

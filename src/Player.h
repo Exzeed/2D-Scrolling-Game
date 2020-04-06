@@ -1,14 +1,14 @@
 #pragma once
-#ifndef __PLANE__
-#define __PLANE__
+#ifndef __PLAYER__
+#define __PLAYER__
 #include "DisplayObject.h"
 #include "Move.h"
 
-class Plane : public DisplayObject
+class Player : public DisplayObject
 {
 public:
-	Plane();
-	~Plane();
+	Player();
+	~Player();
 	
 	void draw() override;
 	void update() override;
@@ -28,4 +28,4 @@ private:
 	void m_checkBounds();
 };
 
-#endif /* defined (__PLANE__) */
+#endif /* defined (__PLAYER__) */

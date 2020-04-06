@@ -72,9 +72,6 @@
     <ClCompile Include="..\src\Level1Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Plane.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Island.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
       <Filter>Game Objects\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Background.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Player.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,9 +164,6 @@
     <ClInclude Include="..\src\Level1Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Plane.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Move.h">
       <Filter>Enums</Filter>
     </ClInclude>
@@ -201,6 +198,9 @@
       <Filter>Game Objects\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Background.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Player.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
