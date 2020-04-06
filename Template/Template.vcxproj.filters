@@ -72,9 +72,6 @@
     <ClCompile Include="..\src\Level1Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Island.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\Cloud.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
       <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Player.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Item.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,9 +167,6 @@
     <ClInclude Include="..\src\Move.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Island.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Cloud.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
@@ -201,6 +198,9 @@
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Player.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Item.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>

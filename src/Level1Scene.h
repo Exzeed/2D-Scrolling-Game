@@ -4,7 +4,7 @@
 
 #include "Scene.h"
 #include "Player.h"
-#include "Island.h"
+#include "Item.h"
 #include "Background.h"
 #include "Cloud.h"
 #include "Config.h"
@@ -27,7 +27,7 @@ public:
 private:
 	// game objects
 	Player* m_pPlayer;
-	Island* m_pIsland;
+	Item* m_pItem;
 	Background* m_pBackground;
 
 	int m_cloudNum = Config::CLOUD_NUM;

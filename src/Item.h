@@ -1,13 +1,13 @@
 #pragma once
-#ifndef __ISLAND__
-#define __ISLAND__
+#ifndef __ITEM__
+#define __ITEM__
 #include "DisplayObject.h"
 
-class Island : public DisplayObject
+class Item : public DisplayObject
 {
 public:
-	Island();
-	~Island();
+	Item();
+	~Item();
 	
 	void draw() override;
 	void update() override;
@@ -19,4 +19,4 @@ private:
 	void m_checkBounds();
 };
 
-#endif /* defined (__ISLAND__) */
+#endif /* defined (__ITEM__) */

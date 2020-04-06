@@ -1,63 +1,62 @@
-#include "Island.h"
+#include "Item.h"
 #include "Game.h"
 
-Island::Island()
+Item::Item()
 {
-	TheTextureManager::Instance()->load("../Assets/textures/island.png",
-		"island", TheGame::Instance()->getRenderer());
+	TheTextureManager::Instance()->load("../Assets/textures/Pickup.gif",
+		"item", TheGame::Instance()->getRenderer());
 
 	// measure size by querying the texture
-	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("island");
+	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("item");
 	setWidth(size.x);
 	setHeight(size.y);
 
 	m_reset();
 	setIsColliding(false);
-	setType(GameObjectType::ISLAND);
+	setType(GameObjectType::ITEM);
 	setVelocity(glm::vec2(-5.0f, 0.0f));
 
-	TheSoundManager::Instance()->load("../Assets/audio/yay.ogg", "yay", SOUND_SFX);
+	TheSoundManager::Instance()->load("../Assets/audio/item.flac", "pickup", SOUND_SFX);
 }
 
-Island::~Island()
-{
-}
+Item::~Item()
+= default;
 
-void Island::draw()
+void Item::draw()
 {
 	int xComponent = getPosition().x;
 	int yComponent = getPosition().y;
 
-	TheTextureManager::Instance()->draw("island", xComponent, yComponent,
+	TheTextureManager::Instance()->draw("item", xComponent, yComponent,
 		TheGame::Instance()->getRenderer(), 0, 255, true);
 }
 
-void Island::update()
+void Item::update()
 {
 	m_move();
 	m_checkBounds();
 }
 
-void Island::clean()
+void Item::clean()
 {
 }
 
-void Island::m_reset()
+void Item::m_reset()
 {
 	//const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
-	const auto randomY = Util::RandomRange(getHeight() * 1.1, Config::SCREEN_HEIGHT - getHeight());
+	const auto randomY = Util::RandomRange(getHeight() * 1.3, Config::SCREEN_HEIGHT - getHeight());
 
 	setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), randomY));
 }
 
-void Island::m_move()
+void Item::m_move()
 {
 	const int xPos = getPosition().x + getVelocity().x;
 	const int yPos = getPosition().y + getVelocity().y;
 	setPosition(glm::vec2(xPos, yPos));
 }
 
-void Island::m_checkBounds()
+void Item::m_checkBounds()
 {
 	if(getPosition().x <= -Config::SCREEN_WIDTH * 0.2f + getWidth())
 	{

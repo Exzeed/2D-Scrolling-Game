@@ -16,7 +16,7 @@ void Level1Scene::draw()
 {
 	m_pBackground->draw();
 	
-	m_pIsland->draw();
+	m_pItem->draw();
 	
 	m_pPlayer->draw();
 
@@ -32,13 +32,13 @@ void Level1Scene::update()
 {
 	m_pBackground->update();
 
-	m_pIsland->update();
+	m_pItem->update();
 
 	//m_pPlayer->setPosition(glm::vec2(m_mousePosition.x, m_pPlayer->getPosition().y));
 	m_pPlayer->setPosition(glm::vec2(m_pPlayer->getPosition().x, m_mousePosition.y));
 	m_pPlayer->update();
 
-	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pIsland);
+	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pItem);
 
 	for (auto cloud : m_pClouds)
 	{
@@ -149,8 +149,8 @@ void Level1Scene::start()
 	m_pBackground = new Background();
 	addChild(m_pBackground);
 
-	m_pIsland = new Island(); // instantiates Island
-	addChild(m_pIsland);
+	m_pItem = new Item();
+	addChild(m_pItem);
 	
 	m_pPlayer = new Player();
 	addChild(m_pPlayer);
