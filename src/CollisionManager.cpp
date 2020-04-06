@@ -33,9 +33,9 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 				TheSoundManager::Instance()->playSound("pickup", 0);
 				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 100);
 				break;
-			case CLOUD:
-				std::cout << "Collision with CLOUD!" << std::endl;
-				TheSoundManager::Instance()->playSound("thunder", 0);
+			case ENEMY:
+				std::cout << "Collision with ENEMY!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
 				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
 				break;
 			default:
@@ -226,10 +226,6 @@ bool CollisionManager::circleAABBCheck(GameObject* object1, GameObject* object2)
 			case ITEM:
 				std::cout << "Collision with ITEM!" << std::endl;
 				TheSoundManager::Instance()->playSound("pickup", 0);
-				break;
-			case CLOUD:
-				std::cout << "Collision with CLOUD!" << std::endl;
-				TheSoundManager::Instance()->playSound("thunder", 0);
 				break;
 
 				if ((attackVector.x > 0 && attackVector.y < 0) || (attackVector.x < 0 && attackVector.y < 0))

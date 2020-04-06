@@ -20,10 +20,14 @@ void Level1Scene::draw()
 	
 	m_pPlayer->draw();
 
-	for (auto cloud : m_pClouds)
+	m_pEnemy1->draw();
+	m_pEnemy2->draw();
+	m_pEnemy3->draw();
+
+	/*for (auto cloud : m_pClouds)
 	{
 		cloud->draw();
-	}
+	}*/
 
 	ScoreBoardManager::Instance()->Draw();
 }
@@ -32,6 +36,10 @@ void Level1Scene::update()
 {
 	m_pBackground->update();
 
+	m_pEnemy1->update();
+	m_pEnemy2->update();
+	m_pEnemy3->update();
+	
 	m_pItem->update();
 
 	//m_pPlayer->setPosition(glm::vec2(m_mousePosition.x, m_pPlayer->getPosition().y));
@@ -40,11 +48,15 @@ void Level1Scene::update()
 
 	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pItem);
 
-	for (auto cloud : m_pClouds)
+	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pEnemy1);
+	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pEnemy2);
+	CollisionManager::squaredRadiusCheck(m_pPlayer, m_pEnemy3);
+
+	/*for (auto cloud : m_pClouds)
 	{
 		cloud->update();
 		CollisionManager::squaredRadiusCheck(m_pPlayer, cloud);
-	}
+	}*/
 }
 
 void Level1Scene::clean()
@@ -155,8 +167,15 @@ void Level1Scene::start()
 	m_pPlayer = new Player();
 	addChild(m_pPlayer);
 
+	m_pEnemy2 = new Enemy(TOP);
+	addChild(m_pEnemy2);
+	m_pEnemy3 = new Enemy(CENTER);
+	addChild(m_pEnemy3);
+	m_pEnemy1 = new Enemy(BOTTOM);
+	addChild(m_pEnemy1);
+
 	// instantiate Cloud Pool
-	m_buildClouds();
+	//m_buildClouds();
 
 	ScoreBoardManager::Instance()->Start();
 }
@@ -166,12 +185,12 @@ glm::vec2 Level1Scene::getMousePosition()
 	return m_mousePosition;
 }
 
-void Level1Scene::m_buildClouds()
-{
-	for (auto i = 0; i < m_cloudNum; ++i)
-	{
-		auto cloud = new Cloud();
-		m_pClouds.push_back(cloud);
-		addChild(cloud);
-	}
-}
+//void Level1Scene::m_buildClouds()
+//{
+//	for (auto i = 0; i < m_cloudNum; ++i)
+//	{
+//		auto cloud = new Cloud();
+//		m_pClouds.push_back(cloud);
+//		addChild(cloud);
+//	}
+//}

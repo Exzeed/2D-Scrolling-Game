@@ -5,7 +5,6 @@ enum GameObjectType {
 	NONE = -1,
 	ITEM,
 	PLAYER,
-	CLOUD,
 	BULLET,
 	ENEMY,
 	BACKGROUND,
