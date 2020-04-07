@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Door.h"
 #include "Wall.h"
+#include "Bullet.h"
 #include "Config.h"
 
 class Level1Scene : public Scene
@@ -30,6 +31,7 @@ private:
 	// game objects
 	Player* m_pPlayer;
 	Background* m_pBackground;
+	Bullet* m_pBullet;
 	
 	Enemy* m_pEnemy1;
 	Enemy* m_pEnemy2;

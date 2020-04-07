@@ -31,7 +31,8 @@ void Level1Scene::draw()
 	{
 		item->draw();
 	}
-
+	
+	m_pBullet->draw();
 	m_pPlayer->draw();
 
 	ScoreBoardManager::Instance()->Draw();
@@ -39,6 +40,17 @@ void Level1Scene::draw()
 
 void Level1Scene::update()
 {
+	for (auto item : m_pItems)
+	{
+		item->update();
+		CollisionManager::squaredRadiusCheck(m_pPlayer, item);
+	}
+
+	if(m_pEnemy1->damage == 0 && m_pEnemy2->damage == 0 && m_pEnemy3->damage == 0)
+	{
+		Game::Instance()->changeSceneState(END_SCENE);
+	}
+	
 	m_pBackground->update();
 
 	m_pEnemy1->update();
@@ -52,6 +64,9 @@ void Level1Scene::update()
 	m_pWall2->update();
 	m_pWall3->update();
 	m_pWall4->update();
+
+	m_pBullet->respawn(m_pPlayer);
+	m_pBullet->update();
 
 	m_pPlayer->setPosition(glm::vec2(m_pPlayer->getPosition().x, m_mousePosition.y));
 	m_pPlayer->update();
@@ -76,10 +91,52 @@ void Level1Scene::update()
 		m_pDoor2->isActive = false;
 	}
 
-	for (auto item : m_pItems)
+
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pWall1))
 	{
-		item->update();
-		CollisionManager::squaredRadiusCheck(m_pPlayer, item);
+		m_pBullet->m_pisFiring = false;
+	}
+
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pWall2))
+	{
+		m_pBullet->m_pisFiring = false;
+	}
+
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pWall3))
+	{
+		m_pBullet->m_pisFiring = false;
+	}
+
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pWall4))
+	{
+		m_pBullet->m_pisFiring = false;
+	}
+
+	//for some reason the collision checks involving the bullet, will continue triggering the check involving the player
+	
+	if(CollisionManager::squaredRadiusCheck(m_pBullet, m_pEnemy1))
+	{
+		m_pBullet->m_pisFiring = false;
+	}
+	if(CollisionManager::squaredRadiusCheck(m_pBullet, m_pEnemy2))
+	{
+		m_pBullet->m_pisFiring = false;
+		m_pEnemy1->damage -= 1;
+	}
+	if(CollisionManager::squaredRadiusCheck(m_pBullet, m_pEnemy3))
+	{
+		m_pBullet->m_pisFiring = false;
+	}
+	
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pDoor1))
+	{
+		m_pDoor1->isActive = false;
+		m_pBullet->m_pisFiring = false;
+	}
+	if(CollisionManager::circleAABBCheck(m_pBullet, m_pDoor2))
+	{
+		m_pDoor2->isActive = false;
+		m_pBullet->m_pisFiring = false;
 	}
 }
 
@@ -108,7 +165,7 @@ void Level1Scene::handleEvents()
 			switch(event.button.button)
 			{
 			case SDL_BUTTON_LEFT:
-				
+				m_pBullet->fire();
 				break;
 			}
 		
@@ -196,6 +253,9 @@ void Level1Scene::start()
 	
 	m_pPlayer = new Player();
 	addChild(m_pPlayer);
+
+	m_pBullet = new Bullet();
+	addChild(m_pBullet);
 
 	m_pEnemy2 = new Enemy(TOP);
 	addChild(m_pEnemy2);

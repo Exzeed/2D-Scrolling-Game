@@ -107,7 +107,16 @@ void EndScene::start()
 	addChild(m_pBackground);
 	
 	const SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pGameOverLabel = new Label("Game Over", "Consolas", 80, yellow, glm::vec2(320.0f, 100.0f));
+
+	if(ScoreBoardManager::Instance()->getLives() > 0)
+	{
+		const SDL_Color green = { 0, 255, 0, 255 };
+		m_pGameOverLabel = new Label("CLEARED", "Consolas", 80, green, glm::vec2(320.0f, 100.0f));
+	}
+	else
+	{
+		m_pGameOverLabel = new Label("Game Over", "Consolas", 80, yellow, glm::vec2(320.0f, 100.0f));
+	}
 	m_pGameOverLabel->setParent(this);
 	addChild(m_pGameOverLabel);
 

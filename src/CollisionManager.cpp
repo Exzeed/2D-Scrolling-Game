@@ -33,21 +33,44 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 				TheSoundManager::Instance()->playSound("pickup", 0);
 				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 100);
 				break;
+				
 			case ENEMY:
 				std::cout << "Collision with ENEMY!" << std::endl;
 				TheSoundManager::Instance()->playSound("hit", 0);
-				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+				switch (object1->getType())
+				{
+				case BULLET:
+					ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 200);
+					break;
+				case PLAYER:
+					ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+					break;
+				default:
+					break;
+				}
 				break;
+				
 			case DOOR:
 				std::cout << "Collision with DOOR!" << std::endl;
 				TheSoundManager::Instance()->playSound("hit", 0);
 				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 300);
-				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+				switch (object1->getType())
+				{
+				case PLAYER:
+					ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+					break;
+				case BULLET:
+					//ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 200);
+					break;
+				default:
+					break;
+				}
 				break;
+				
 			case WALL:
-				std::cout << "Collision with WALL!" << std::endl;
+				/*std::cout << "Collision with WALL!" << std::endl;
 				TheSoundManager::Instance()->playSound("hit", 0);
-				ScoreBoardManager::Instance()->setLives(0);
+				ScoreBoardManager::Instance()->setLives(0);*/
 				break;
 			default:
 				//std::cout << "Collision with unknown type!" << std::endl;
@@ -96,6 +119,7 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 				TheSoundManager::Instance()->playSound("hit", 0);
 				ScoreBoardManager::Instance()->setLives(0);
 				break;
+				
 			default:
 				//std::cout << "Collision with unknown type!" << std::endl;
 				break;
@@ -246,7 +270,35 @@ bool CollisionManager::circleAABBCheck(GameObject* object1, GameObject* object2)
 			case WALL:
 				std::cout << "Collision with WALL!" << std::endl;
 				TheSoundManager::Instance()->playSound("hit", 0);
-				ScoreBoardManager::Instance()->setLives(0);
+				switch (object1->getType())
+				{
+				case PLAYER:
+					//ScoreBoardManager::Instance()->setLives(0);
+					ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+					break;
+				case BULLET:
+					//ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 200);
+					break;
+				default:
+					break;
+				}
+				break;
+				
+			case DOOR:
+				std::cout << "Collision with DOOR!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
+				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 300);
+				switch (object1->getType())
+				{
+				case PLAYER:
+					ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+					break;
+				case BULLET:
+					//ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 200);
+					break;
+				default:
+					break;
+				}
 				break;
 
 				if ((attackVector.x > 0 && attackVector.y < 0) || (attackVector.x < 0 && attackVector.y < 0))

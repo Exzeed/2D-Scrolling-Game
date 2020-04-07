@@ -29,6 +29,7 @@ Enemy::Enemy(Position placement)
 		break;
 	}
 	m_spawnPoint = getPosition().y;
+	damage = 10;
 
 	TheSoundManager::Instance()->load("../Assets/audio/hit.mp3", "hit", SOUND_SFX);
 }
@@ -49,6 +50,13 @@ void Enemy::update()
 {
 	m_move();
 	m_checkBounds();
+
+	if(damage == 0)
+	{
+		setPosition(glm::vec2(Config::SCREEN_WIDTH * 2, Config::SCREEN_HEIGHT * 2));
+		setVelocity(glm::vec2(0.0f, 0.0f));
+		setType(GameObjectType::NONE);
+	}
 }
 
 void Enemy::clean()

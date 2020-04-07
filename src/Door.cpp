@@ -56,7 +56,7 @@ void Door::update()
 
 	if(!isActive)
 	{
-		setPosition(glm::vec2(Config::SCREEN_WIDTH * 1.5, Config::SCREEN_HEIGHT * 1.5));
+		setPosition(glm::vec2(Config::SCREEN_WIDTH * 2, Config::SCREEN_HEIGHT * 2));
 		setVelocity(glm::vec2(0.0f, 0.0f));
 		setType(GameObjectType::NONE);
 	}

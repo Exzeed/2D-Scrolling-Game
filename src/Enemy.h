@@ -9,6 +9,8 @@ class Enemy : public DisplayObject
 public:
 	Enemy(Position placement);
 	~Enemy();
+
+	int damage;
 	
 	virtual void draw() override;
 	virtual void update() override;
