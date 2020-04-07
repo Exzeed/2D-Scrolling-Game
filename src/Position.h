@@ -5,6 +5,7 @@
 enum Position
 {
 	TOP,
+	MIDDLE,
 	CENTER,
 	BOTTOM,
 	NUM_OF_POSITIONS

@@ -19,14 +19,13 @@ Enemy::Enemy(Position placement)
 	switch(placement)
 	{
 	case TOP:
-		setPosition(glm::vec2(Config::SCREEN_WIDTH * 4 + getWidth(), Config::SCREEN_HEIGHT * 0.2));
-		//m_spawnPoint = getPosition().y;
+		setPosition(glm::vec2(Config::SCREEN_WIDTH * 2.5 + getWidth(), Config::SCREEN_HEIGHT * 0.17));
 		break;
 	case CENTER:
-		setPosition(glm::vec2(Config::SCREEN_WIDTH * 2.5 + getWidth(), Config::SCREEN_HEIGHT * 0.5));
+		setPosition(glm::vec2(Config::SCREEN_WIDTH * 4 + getWidth(), Config::SCREEN_HEIGHT * 0.5));
 		break;
 	case BOTTOM:
-		setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), Config::SCREEN_HEIGHT * 0.9));
+		setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), Config::SCREEN_HEIGHT * 1.15- getHeight()));
 		break;
 	}
 	m_spawnPoint = getPosition().y;
@@ -43,7 +42,7 @@ void Enemy::draw()
 	const int yComponent = getPosition().y;
 
 	TheTextureManager::Instance()->draw("robot", xComponent, yComponent,
-		TheGame::Instance()->getRenderer(), 0, 128, true);
+		TheGame::Instance()->getRenderer(), 0, 255, true);
 }
 
 void Enemy::update()

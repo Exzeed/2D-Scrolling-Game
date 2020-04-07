@@ -38,6 +38,17 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 				TheSoundManager::Instance()->playSound("hit", 0);
 				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
 				break;
+			case DOOR:
+				std::cout << "Collision with DOOR!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
+				ScoreBoardManager::Instance()->setScore(ScoreBoardManager::Instance()->getScore() + 300);
+				ScoreBoardManager::Instance()->setLives(ScoreBoardManager::Instance()->getLives() - 1);
+				break;
+			case WALL:
+				std::cout << "Collision with WALL!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
+				ScoreBoardManager::Instance()->setLives(0);
+				break;
 			default:
 				//std::cout << "Collision with unknown type!" << std::endl;
 				break;
@@ -79,6 +90,11 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 			case ITEM:
 				std::cout << "Collision with Item!" << std::endl;
 				TheSoundManager::Instance()->playSound("pickup", 0);
+				break;
+			case WALL:
+				std::cout << "Collision with WALL!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
+				ScoreBoardManager::Instance()->setLives(0);
 				break;
 			default:
 				//std::cout << "Collision with unknown type!" << std::endl;
@@ -226,6 +242,11 @@ bool CollisionManager::circleAABBCheck(GameObject* object1, GameObject* object2)
 			case ITEM:
 				std::cout << "Collision with ITEM!" << std::endl;
 				TheSoundManager::Instance()->playSound("pickup", 0);
+				break;
+			case WALL:
+				std::cout << "Collision with WALL!" << std::endl;
+				TheSoundManager::Instance()->playSound("hit", 0);
+				ScoreBoardManager::Instance()->setLives(0);
 				break;
 
 				if ((attackVector.x > 0 && attackVector.y < 0) || (attackVector.x < 0 && attackVector.y < 0))

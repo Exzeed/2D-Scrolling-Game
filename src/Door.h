@@ -1,18 +1,20 @@
 #pragma once
-#ifndef __ENEMY__
-#define __ENEMY__
+#ifndef __DOOR__
+#define __DOOR__
 #include "DisplayObject.h"
 #include "Position.h"
 
-class Enemy : public DisplayObject
+class Door : public DisplayObject
 {
 public:
-	Enemy(Position placement);
-	~Enemy();
+	Door(Position placement);
+	~Door();
 	
 	virtual void draw() override;
 	virtual void update() override;
 	virtual void clean() override;
+
+	bool isActive;
 	
 private:
 	int m_spawnPoint;

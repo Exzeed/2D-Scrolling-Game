@@ -43,10 +43,10 @@ void Item::clean()
 
 void Item::m_reset()
 {
-	//const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
+	const auto randomX = Util::RandomRange(getWidth() * 0.5, Config::SCREEN_WIDTH - getWidth());
 	const auto randomY = Util::RandomRange(getHeight() * 1.3, Config::SCREEN_HEIGHT - getHeight());
 
-	setPosition(glm::vec2(Config::SCREEN_WIDTH + getWidth(), randomY));
+	setPosition(glm::vec2(Config::SCREEN_WIDTH + randomX, randomY));
 }
 
 void Item::m_move()

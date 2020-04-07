@@ -1,14 +1,14 @@
 #pragma once
-#ifndef __ENEMY__
-#define __ENEMY__
+#ifndef __WALL__
+#define __WALL__
 #include "DisplayObject.h"
 #include "Position.h"
 
-class Enemy : public DisplayObject
+class Wall : public DisplayObject
 {
 public:
-	Enemy(Position placement);
-	~Enemy();
+	Wall(Position placement);
+	~Wall();
 	
 	virtual void draw() override;
 	virtual void update() override;

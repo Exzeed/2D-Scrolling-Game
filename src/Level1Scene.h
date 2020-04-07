@@ -7,6 +7,8 @@
 #include "Item.h"
 #include "Background.h"
 #include "Enemy.h"
+#include "Door.h"
+#include "Wall.h"
 #include "Config.h"
 
 class Level1Scene : public Scene
@@ -27,15 +29,24 @@ public:
 private:
 	// game objects
 	Player* m_pPlayer;
-	Item* m_pItem;
 	Background* m_pBackground;
+	
 	Enemy* m_pEnemy1;
 	Enemy* m_pEnemy2;
 	Enemy* m_pEnemy3;
 
-	/*int m_cloudNum = Config::CLOUD_NUM;
-	std::vector<Cloud*> m_pClouds;
-	void m_buildClouds();*/
+	Door* m_pDoor1;
+	Door* m_pDoor2;
+	//Door* m_pDoor3;
+
+	Wall* m_pWall1;
+	Wall * m_pWall2;
+	Wall* m_pWall3;
+	Wall* m_pWall4;
+
+	int m_itemNum = Config::ITEM_NUM;
+	std::vector<Item*> m_pItems;
+	void m_buildItems();
 
 	// private data member
 	glm::vec2 m_mousePosition;
